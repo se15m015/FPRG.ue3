@@ -9,8 +9,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
-        //Integer
+        //Integer to Float
         ArrayList<Integer> inputInteger = new ArrayList<Integer>(){{
             add(3);
             add(7);
@@ -18,12 +17,13 @@ public class Main {
             add(44);
         }};
 
-        //Integer resultIntegerPlusOne = fold((x,y) -> ( x + y), 5, inputInteger);
 
-        System.out.println("--------Integer--------");
-       // System.out.println("resultIntegerPlusOne: " + resultIntegerPlusOne);
+        ArrayList<Float> resultFloat = scan((a,b) -> (a/2 + b), 5f, inputInteger);
+        System.out.println("--------Floats--------");
+        System.out.println("Numbers: " + inputInteger);
+        System.out.println("resultCalculated: " + resultFloat);
 
-        // String
+        // String to Int
         ArrayList<String> inputString = new ArrayList<String>(){{
             add("Hello");
             add("World");
@@ -31,11 +31,19 @@ public class Main {
             add("Bar");
         }};
 
-        ArrayList<Integer> resultString = scan((x,y) -> ( x * y.length()), 5, inputString);
+        ArrayList<Integer> resultString = scan((x,y) -> ( x + y.length()), 5, inputString);
 
-        System.out.println("--------String--------");
+        System.out.println("--------StringCounts--------");
+        System.out.println("StringConcat: " + inputString);
         System.out.println("resultStringConcat: " + resultString);
 
+
+        //Integer to Strings
+
+        ArrayList<String> resultStrings= scan((a,b) -> (a + String.valueOf(b)), "", inputInteger);
+        System.out.println("--------Strings--------");
+        System.out.println("Numbers: " + inputInteger);
+        System.out.println("resultConcatStrings: " + resultStrings);
     }
 
     private static <B,A> ArrayList<B> scan(Iscan<B,A> func, B initialValue, ArrayList<A> input){
